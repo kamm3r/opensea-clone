@@ -76,8 +76,10 @@ export default function Collection() {
         <img
           className='w-full object-cover'
           src={
+            //@ts-ignore
             collection?.bannerImageUrl
-              ? collection.bannerImageUrl
+              ? //@ts-ignore
+                collection.bannerImageUrl
               : 'https://via.placeholder.com/200'
           }
           alt='Banner'
@@ -88,8 +90,10 @@ export default function Collection() {
           <img
             className='w-40 h-40 object-cover rounded-full border-2 border-[#202225] mt-[-4rem]'
             src={
+              //@ts-ignore
               collection?.imageUrl
-                ? collection.imageUrl
+                ? //@ts-ignore
+                  collection.imageUrl
                 : 'https://via.placeholder.com/200'
             }
             alt='Profile image'
@@ -119,11 +123,12 @@ export default function Collection() {
           </div>
         </div>
         <div className='w-full flex justify-center text-white'>
+          {/* @ts-ignore */}
           <div className='text-5xl font-bold mb-4'>{collection?.title}</div>
         </div>
         <div className='w-full flex justify-center text-white'>
           <div className='text-lg mb-4'>
-            Created By{' '}
+            Created By {/* @ts-ignore */}
             <span className='text-[#2081e2]'>{collection?.creator}</span>
           </div>
         </div>
@@ -137,6 +142,7 @@ export default function Collection() {
             </div>
             <div className='w-1/4'>
               <div className='text-3xl font-bold w-full flex items-center justify-center'>
+                {/* @ts-ignore */}
                 {collection?.allowOwners ? collection.allowOwners.length : ''}
               </div>
               <div className='text-lg w-full text-center mt-1'>owners</div>
@@ -148,6 +154,7 @@ export default function Collection() {
                   src='https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg'
                   alt=' eth'
                 />
+                {/* @ts-ignore */}
                 {collection?.floorPrice}
               </div>
               <div className='text-lg w-full text-center mt-1'>floor price</div>
@@ -159,6 +166,7 @@ export default function Collection() {
                   src='https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg'
                   alt=' eth'
                 />
+                {/* @ts-ignore */}
                 {collection?.volumeTraded}.5k
               </div>
               <div className='text-lg w-full text-center mt-1'>
@@ -169,6 +177,7 @@ export default function Collection() {
         </div>
         <div className='w-full flex justify-center text-white'>
           <div className='text-[#8a939b] text-xl w-max-1/4 flex-wrap mt-4'>
+            {/* @ts-ignore */}
             {collection?.description}
           </div>
         </div>
@@ -177,6 +186,7 @@ export default function Collection() {
             <NFTCard
               key={id}
               nftItem={nftItem}
+              // @ts-ignore
               title={collection?.title}
               listings={listings}
             />
@@ -186,18 +196,3 @@ export default function Collection() {
     </div>
   );
 }
-
-// export function getServerSideProps(){
-//     const query =`*[_type == "marketItems" && contractAddress == "0x9869147ed223883710F57Fa6f72cc3f8449ac874"]{
-//         "imageUrl": profileImage.asset -> url,
-//          "bannerImageUrl": bannerImage.asset -> url,
-//          volumeTraded,
-//          createdBy,
-//          contractAddress,
-//          "creator": createdBy -> userName,
-//          title,
-//          floorPrice,
-//          "allowOwners": owners[]->,
-//          description
-//        }`
-// }
